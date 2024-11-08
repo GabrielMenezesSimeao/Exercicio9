@@ -1,0 +1,22 @@
+import struct
+
+# Caminho do arquivo binário
+file_path = 'caminho/do/arquivo.bin'
+
+# Abre o arquivo binário para leitura
+with open(file_path, 'rb') as f:
+    # Lê todos os bytes do arquivo
+    data = f.read()
+
+# O formato de um long no Python geralmente é 'q' (um long inteiro de 8 bytes)
+# Ajuste o tamanho da leitura dependendo do número de números que você espera
+numbers = struct.iter_unpack('q', data)
+
+# Converta os números em uma lista
+numbers_list = [num[0] for num in numbers]
+
+# Quantidade de números
+print("Número de números:", len(numbers_list))
+
+# O maior número
+print("Maior número:", max(numbers_list))
